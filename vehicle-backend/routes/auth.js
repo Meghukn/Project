@@ -8,6 +8,20 @@ const router = express.Router();
 router.post("/register", async (req,res) => {
   const {name,email,password} = req.body;
 
+  if(!name || !email || !password) {
+    return res.status(400).json({message: "All fields are required"})
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if(!emailRegex.test(email)) {
+    return res.status(400).json({message : "Invalid email format"})
+  }
+
+  if(password.length<6) {
+    return res.status(400).json({message: "Password must be 6+ characters"})
+  }
+
   try{
     const userExists = await User.findOne({email});
 
@@ -51,7 +65,7 @@ router.post("/login", async (req,res) => {
       const token = jwt.sign(
         { id: user._id },
         process.env.JWT_SECRET,
-        { expiresIn: "7d" }
+        { expiresIn: "1d" }
       );
 
       res.json({

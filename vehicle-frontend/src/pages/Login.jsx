@@ -34,7 +34,7 @@ function Login() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Register</h2>
+      <h2>Login</h2>
       <input name="email" placeholder="Email" onChange={handleChange} />
       <input name="password" type="password" placeholder="Password" onChange={handleChange} />
       <button type="submit">Login</button>

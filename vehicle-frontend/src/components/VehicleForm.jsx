@@ -1,6 +1,7 @@
 import { useState } from "react";
 import API from "../services/api";
 
+
 function VehicleForm ({ onVehicleAdded }) {
   const [form, setForm] = useState({
     brand: "",
@@ -32,7 +33,7 @@ function VehicleForm ({ onVehicleAdded }) {
       });
 
     }catch(error) {
-      alert(error.respose?.data?.message || "Error adding vehicle")
+      alert(error.response?.data?.message || "Error adding vehicle")
     }
   };
 
@@ -69,10 +70,10 @@ function VehicleForm ({ onVehicleAdded }) {
         onChange={handleChange}
       />
 
-      <button type = "submit">Add Vehicle</button>
+      <button type = "submit" className="button button-primary">Add Vehicle</button>
 
     </form>
-  )
+  );
  };
 
  export default VehicleForm;

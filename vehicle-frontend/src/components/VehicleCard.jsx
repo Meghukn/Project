@@ -1,3 +1,4 @@
+
 function VehicleCard ({ vehicle }) {
 
   return (
